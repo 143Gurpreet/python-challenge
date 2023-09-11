@@ -2,7 +2,7 @@ import csv
 import os
 # Path to the CSV file
 csv_path = os.path.join("Resources", "budget_data.csv")
-
+ANALYSIS_PATH = os.path.join("analysis", "financial_analysis.txt")
 # srart up  variables
 total_months = 0
 net_total = 0
@@ -12,6 +12,7 @@ greatest_increase = {"Date": "", "Amount": 0}
 greatest_decrease = {"Date": "", "Amount": 0}
 
 # Open and read the CSV file
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 with open(csv_path) as budget_data:
     csv_reader = csv.reader(budget_data)
     
@@ -55,7 +56,7 @@ print(f"Greatest Increase in Profits: {greatest_increase['Date']} (${greatest_in
 print(f"Greatest Decrease in Profits: {greatest_decrease['Date']} (${greatest_decrease['Amount']})")
 
 # Export the analysis to a text file
-with open("financial_analysis.txt", "w") as file:
+with open(ANALYSIS_PATH, "w") as file:
     file.write(f"financial Analysis\n")
     file.write(f"------------------------------\n")
     file.write(f"Total Months: {total_months}\n")
