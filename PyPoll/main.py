@@ -4,12 +4,13 @@ import os
 
 # Files to load:
 csv_path = os.path.join("Resources", "election_data.csv")
-
+ANALYSIS_PATH = os.path.join("analysis", "financial_analysis.txt")
 # start up variables
 total_votes = 0
 candidates = {}
 
 # Read the csv:
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 with open(csv_path) as election_data:
     csv_reader = csv.reader(election_data)
 
@@ -50,7 +51,7 @@ print(f"Winner: {winner}")
 print(f"-------------------------")
 
 # Export the analysis to a text file
-with open("election_results.txt", "w") as file:
+with open(ANALYSIS_PATH, "w") as file:
     file.write("Election Results\n")
     file.write("-------------------------\n")
     file.write(f"Total Votes: {total_votes}\n")
